@@ -5,14 +5,12 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<div id='messagesDiv'></div>
-<input type='text' id='messageInput' placeholder='Message...'>
+<div class="inputWrapper">
+  <input type="text" id="messageInput" placeholder="such wow">
+</div>
 <script>
-
-  // Get a reference to the root of the chat data.
   var messagesRef = new Firebase('https://snapshibe.firebaseio.com:443/');
 
-  // When the user presses enter on the message input, write the message to firebase.
   $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
       messagesRef.push({text:$('#messageInput').val()});
@@ -20,24 +18,19 @@
     }
   });
 
-  // Add a callback that is triggered for each chat message.
   messagesRef.limit(10).on('child_added', function (snapshot) {
-    var message = snapshot.val();
-    addItem(message.text);
-    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+    addItem(snapshot.val().text);
   });
-
 
   // From dogecoin.com's shibbit shower
   function addItem(text) {
-    docHeight = $(document).innerHeight();
-    docWidth = $(document).innerWidth()
+    docHeight = $(document).innerHeight() * 0.9;
+    docWidth = $(document).innerWidth() * 0.9;
     textCol = '#' + Math.floor(Math.random() * 16777215).toString(16);
     textSize = Math.floor((Math.random() * 48) + 12);
     yPos = Math.floor((Math.random() * docHeight));
     xPos = Math.floor((Math.random() * docWidth));
     $('<div class="shibbit" style="color:' + textCol + ';left:' + xPos + 'px;top:' + yPos + 'px;font-size:' + textSize + 'px;">' + text + '</div>').appendTo("body").fadeIn('fast').delay(2000).fadeOut('fast');
-    $('.bubble:not(:last-child)').remove();
   }
 </script>
 </body>

@@ -4,6 +4,26 @@ body {
 }
 
 .shibbit {
-  font-family: "Comic Sans", "Blackboard", sans-serif;
+  font-family: "Comic Sans MS", "Blackboard", sans-serif;
   position: fixed;
+}
+
+.inputWrapper {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+#messageInput {
+  font-family: "Comic Sans MS", "Blackboard", sans-serif;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 200px;
+
+  padding: 0.5em 0.6em 0.5em 0.6em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 24px;
 }
