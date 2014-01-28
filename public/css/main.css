@@ -5,5 +5,5 @@ body {
 
 .shibbit {
   font-family: "Comic Sans", "Blackboard", sans-serif;
-  font-size: 24pt;
+  position: fixed;
 }

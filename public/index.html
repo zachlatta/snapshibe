@@ -23,9 +23,22 @@
   // Add a callback that is triggered for each chat message.
   messagesRef.limit(10).on('child_added', function (snapshot) {
     var message = snapshot.val();
-    $('<div/>').text(message.text).appendTo($('#messagesDiv'));
+    addItem(message.text);
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
   });
+
+
+  // From dogecoin.com's shibbit shower
+  function addItem(text) {
+    docHeight = $(document).innerHeight();
+    docWidth = $(document).innerWidth()
+    textCol = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    textSize = Math.floor((Math.random() * 48) + 12);
+    yPos = Math.floor((Math.random() * docHeight));
+    xPos = Math.floor((Math.random() * docWidth));
+    $('<div class="shibbit" style="color:' + textCol + ';left:' + xPos + 'px;top:' + yPos + 'px;font-size:' + textSize + 'px;">' + text + '</div>').appendTo("body").fadeIn('fast').delay(2000).fadeOut('fast');
+    $('.bubble:not(:last-child)').remove();
+  }
 </script>
 </body>
 </html>
