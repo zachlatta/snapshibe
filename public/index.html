@@ -9,16 +9,21 @@
   <input type="text" id="messageInput" placeholder="such wow" autocorrect="off" autocapitalize="off">
 </div>
 <script>
-  var messagesRef = new Firebase('https://snapshibe.firebaseio.com:443/');
+  var ref = new Firebase('https://snapshibe.firebaseio.com:443/');
 
-  $('#messageInput').keypress(function (e) {
+  $('#messageInput').keypress(function(e) {
     if (e.keyCode == 13) {
-      messagesRef.push({text:$('#messageInput').val()});
+      ref.push({text:$('#messageInput').val()});
       $('#messageInput').val('');
     }
   });
 
-  messagesRef.limit(10).on('child_added', function (snapshot) {
+  first = true;
+  ref.endAt().limit(1).on('child_added', function(snapshot) {
+    if (first) {
+      first = false;
+      return;
+    }
     addItem(snapshot.val().text);
   });
 
