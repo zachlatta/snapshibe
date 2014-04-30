@@ -1,4 +1,4 @@
-# Snapshibe
+# Snapshibe ![Analytics](https://ga-beacon.appspot.com/UA-34529482-6/snapshibe/readme?pixel)
 
 ![](http://i.imgur.com/hA3yHXA.gif)
 
